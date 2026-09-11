@@ -60,3 +60,7 @@ MEMORY.md
 # Source video files
 *.mp4
 
+# Profile files
+README_PROFILE.md
+profile-3d.yml
+

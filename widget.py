@@ -19,9 +19,10 @@ from typing import List, Optional
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QPoint, QPointF, QRectF, QTimer
 
-from pet_elliot import ElliotPet
+from pet_elliot import ElliotPet, PetCompanionWidget
 from antigravity_provider import LimitItem, QuotaSnapshot
 from i18n import t
+import pet_catalog
 
 
 class Particle:
@@ -332,11 +333,46 @@ class DreamagyWidget(QtWidgets.QWidget):
 
     def set_pet_avatar(self, pet_name: str):
         pets = ElliotPet.get_available_pets(self.language)
+        found = False
         for dname, fname, path in pets:
             if fname == pet_name:
                 self.pet.set_pet_image(path, save_name=fname)
                 self._on_pet_avatar_changed(fname)
+                found = True
                 break
+        if not found:
+            from pet_elliot import PETS_DIR
+            p_path = os.path.join(PETS_DIR, pet_name)
+            if os.path.exists(p_path):
+                self.pet.set_pet_image(p_path, save_name=pet_name)
+                self._on_pet_avatar_changed(pet_name)
+
+    def download_catalog_pet(self, pet_id: str):
+        """Asynchronously downloads a pet from the online catalog and activates it."""
+        if not hasattr(self, "_active_downloaders"):
+            self._active_downloaders = []
+
+        worker = pet_catalog.PetDownloadWorker(pet_id, self)
+        self._active_downloaders.append(worker)
+
+        if hasattr(self.pet, "show_speech"):
+            self.pet.show_speech(t("pet_downloading", self.language), duration=3.0)
+
+        def on_finished(pid, success, err):
+            if success:
+                self.set_pet_avatar(pid)
+                info = pet_catalog.get_pet_info(pid)
+                name = info.get("name", pid) if info else pid
+                if hasattr(self.pet, "show_speech"):
+                    self.pet.show_speech(t("pet_download_success", self.language).format(name), duration=3.5)
+            else:
+                if hasattr(self.pet, "show_speech"):
+                    self.pet.show_speech(t("pet_download_error", self.language).format(err), duration=4.0)
+            if worker in self._active_downloaders:
+                self._active_downloaders.remove(worker)
+
+        worker.finished.connect(on_finished)
+        worker.start()
 
     def add_custom_pet_dialog(self):
         file_path, _ = QtWidgets.QFileDialog.getOpenFileName(
@@ -398,6 +434,17 @@ class DreamagyWidget(QtWidgets.QWidget):
             act_p.triggered.connect(lambda _, fn=file_name: self.set_pet_avatar(fn))
 
         pet_menu.addSeparator()
+        # Online Catalog submenu for downloadable pets
+        downloadable = pet_catalog.get_downloadable_catalog_pets()
+        if downloadable:
+            catalog_menu = pet_menu.addMenu(t("pet_catalog_menu", self.language))
+            for p_info in downloadable:
+                pid = p_info["id"]
+                label_key = f"display_name_{self.language}"
+                p_label = p_info.get(label_key, p_info.get("display_name_ru", pid))
+                act_dl = catalog_menu.addAction(f"📥 {p_label}")
+                act_dl.triggered.connect(lambda _, p_id=pid: self.download_catalog_pet(p_id))
+
         act_add_pet = pet_menu.addAction(t("add_custom_pet", self.language))
         act_add_pet.triggered.connect(self.add_custom_pet_dialog)
 

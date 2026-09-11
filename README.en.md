@@ -49,18 +49,41 @@
   - `< 15%` - Red (`#ef4444`): Critical quota level.
 - **Reset Timers**: Clean countdowns for weekly renewal (Mondays) and rolling 5-hour windows.
 
-### Interactive Companion: Elliot Alderson
-- **Live Video Animation**: Real Elliot sequence from Mr. Robot with fluid motion, head turns, and natural breathing.
-- **Typing Focus**: Global keystroke detection (`GetAsyncKeyState`) shifts Elliot into a concentrated hacking posture while you write code.
-- **Click Interactions**: Clicking the character triggers responsive posture changes or classic fsociety quotes like `"hello, friend."`.
-- **Docked and Detached Modes**: Keep Elliot docked to the quota pill or detach him into an independent floating window (scale 0.75x, 1.0x, 1.25x, 1.5x).
-- **Custom Companions**: Load any custom avatar or image directly through the right-click menu.
+### 🐾 Interactive Companions & Pets Roster
+
+<div align="center">
+  <img src="assets/pets_showcase.gif" alt="Dreamagy Characters Showcase" width="680" />
+  <br />
+  <sub>⚡ Interactive companion showcase: Elliot Alderson live video and animated Codex 8×9 sprite atlases</sub>
+</div>
+
+<br />
+
+Dreamagy features a diverse collection of **9 animated desktop companions**, each with unique character traits, typing reactions, speech quotes, and behaviors:
+
+| Companion | Description & Personality | Animations & States |
+| :--- | :--- | :--- |
+| 🎬 **Elliot Alderson** | Protagonist of *Mr. Robot*, fsociety hacker. | Live video sequence, breathing, concentrated hacking focus while typing, glitch effects, and quotes like *“hello, friend.”*. |
+| 📎 **Clippy (Paperclip)** | Nostalgic Microsoft Office assistant perched on a paper notepad. | Friendly hand-wave, running with papers, jumps, idle glances, and coding tips. |
+| 🐧 **Tux (Linux Penguin)** | Legendary mascot of Linux and server compilation. | Waddling run, waving, calm idle, and reminders like `sudo make install`. |
+| ⚔️ **YoRHa 2B** | Chibi battle android from *NieR:Automata* with hovering Emil head. | Pod floating, jumps, contemplative seated idle, and philosophical observations. |
+| 🐱 **Shigure Ui (Nyako)** | Cute anime mascot wearing cyber cat-ear headphones. | Bouncing jumps, cheerful waves, idle tail swish, and the iconic *“Ui-beam!”*. |
+| 👔 **Dario Amodei** | CEO of Anthropic and architect of the Claude family of models. | Code reviews, steady posture, and quotes on *Scaling Laws* and *Claude 3.7*. |
+| 📢 **Yelling Dario** | High-energy Dario urgently demanding more compute power. | Charging run, dynamic hand gestures, and shouts of *“MORE COMPUTE!”*. |
+| 👱 **Donald Trump** | Expressive animated pixel Trump with iconic golden hair. | Animated marching, expressive gesturing, and *“Make Code Great Again!”*. |
+| 🧢 **Slavik** | Charismatic street hacker in a tracksuit and cap. | Squatting stance, brisk sprint, and strict quota monitoring. |
+
+- **Codex 8×9 Sprite Atlas Support**: Full compatibility with `pet-companion` and `vscode-pets` standards — animated states including idle, running, jumping, waiting, review, and waving.
+- **One-Click Online Catalog**: Download and activate extra companions directly from the context menu without manual file handling.
+- **Mr. Robot Live Video**: Fluid sequence featuring genuine facial expressions, natural breathing, and micro-movements.
+- **Keystroke Activity Reactions**: Typing code immediately triggers companions to run or review, while Elliot leans forward into terminal hacking focus.
+- **Interactive Speech Bubbles**: Left-clicking a companion triggers a greeting, wave, or witty quote in a glowing neon pill.
+- **Docked & Floating Windows**: Dock seamlessly beside the quota capsule or detach into an independent floating companion (scales 0.75x, 1.0x, 1.25x, 1.5x).
 
 ### Adding Your Own Pet
-Not a fan of Elliot? You can use any character you want:
-- **Static image**: Drop a PNG, JPG, or WebP file into the `assets/pets/` folder and select it via right-click -> "Change Pet".
-- **Live animation**: Create a subfolder inside `assets/pets/` (e.g. `assets/pets/my_character/`), fill it with numbered frames (`frame_000.png`, `frame_001.png`, ...) and the app will play them as a video sequence.
-- Scaling, detach mode, and all visual effects work the same for any pet.
+- **Codex 8×9 Sprite Atlas**: Place a folder with `pet.json` and `spritesheet.webp` (or `.png`) in `assets/pets/` — Dreamagy automatically detects all states and animations.
+- **Image Sequence**: Place a folder with numbered frames (`frame_000.png`, `frame_001.png`, ...) for fluid video playback.
+- **Static Image**: Drop any PNG/WebP into `assets/pets/` for procedural breathing, blinking, and tilting.
 
 ---
 
