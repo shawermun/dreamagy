@@ -55,6 +55,7 @@ test_check.py
 
 # User config (generated at runtime)
 config.json
+MEMORY.md
 
 # Source video files
 *.mp4

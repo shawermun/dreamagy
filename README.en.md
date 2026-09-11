@@ -56,6 +56,12 @@
 - **Docked and Detached Modes**: Keep Elliot docked to the quota pill or detach him into an independent floating window (scale 0.75x, 1.0x, 1.25x, 1.5x).
 - **Custom Companions**: Load any custom avatar or image directly through the right-click menu.
 
+### Adding Your Own Pet
+Not a fan of Elliot? You can use any character you want:
+- **Static image**: Drop a PNG, JPG, or WebP file into the `assets/pets/` folder and select it via right-click -> "Change Pet".
+- **Live animation**: Create a subfolder inside `assets/pets/` (e.g. `assets/pets/my_character/`), fill it with numbered frames (`frame_000.png`, `frame_001.png`, ...) and the app will play them as a video sequence.
+- Scaling, detach mode, and all visual effects work the same for any pet.
+
 ---
 
 ## Key Features
@@ -102,66 +108,6 @@
 ### Windows Startup Setup (Optional)
 1. Press `Win + R`, type `shell:startup`, and hit Enter.
 2. Create a shortcut to `run.bat` and drop it into the startup folder.
-
----
-
-## Controls
-
-| Action | Result |
-| :--- | :--- |
-| **LMB + Drag** | Freely move the widget anywhere on screen |
-| **RMB on Widget** | Open context menu and settings |
-| **Click on Elliot** | Trigger character reaction or quote |
-| **Type on Keyboard** | Activates companion concentration mode |
-| **Tray Icon** | Quick menu, force refresh quotas, and exit |
-
----
-
-## Architecture
-
-```mermaid
-flowchart LR
-    AG[Google Antigravity IDE] -->|Launches| LS[language_server.exe]
-    LS -->|Local HTTPS Connect RPC| Prov[AntigravityProvider]
-    Prov -->|Parse quotas and reset times| Core[Dreamagy Engine]
-    Core -->|PyQt5 Rendering| Widget[Quota Widget]
-    Core -->|Live Frame Animation| Pet[Elliot Companion]
-```
-
-1. `antigravity_provider.py` locates the PID of `language_server.exe`.
-2. Extracts the one-time CSRF token (`--csrf_token`) and active HTTPS port from process arguments.
-3. Queries local Connect RPC endpoints:
-   - `/GetUserStatus` - tier and account info.
-   - `/RetrieveUserQuotaSummary` - exact buckets for `gemini-weekly`, `gemini-5h`, `3p-weekly`, `3p-5h`.
-4. Rendered via PyQt5 with a frameless translucent window.
-
----
-
-## Project Structure
-
-```
-dreamagy/
-├── assets/
-│   ├── demo.gif              # Main preview animation
-│   ├── quota_bars.gif        # Quota bar animation demo
-│   ├── elliot.gif            # Elliot companion animation demo
-│   ├── elliot.png            # Static Elliot photo asset
-│   └── pets/                 # Custom skins and animation frames
-├── antigravity_provider.py   # Local Antigravity RPC connector
-├── config.py                 # Configuration loader and saver
-├── config.json               # User preferences file
-├── i18n.py                   # Localization module (RU, EN, ZH)
-├── main.py                   # Application entry point
-├── pet_elliot.py             # Companion engine and animations
-├── settings_dialog.py        # Settings dialog
-├── tray.py                   # Windows system tray integration
-├── widget.py                 # Main widget with particles and shimmer
-├── requirements.txt          # Python dependencies
-├── run.bat                   # Quick launcher script
-├── README.md                 # Russian documentation
-├── README.en.md              # English documentation
-└── README.zh.md              # Chinese documentation
-```
 
 ---
 

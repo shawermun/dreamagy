@@ -56,6 +56,12 @@
 - **停靠与独立双模式 (Docked & Detached)**: 埃利奥特可直接吸附于配额胶囊旁，亦可作为独立悬浮窗口任意拖拽，支持 0.75x、1.0x、1.25x、1.5x 四档缩放。
 - **自定义伴侣形象**: 支持通过右键菜单直接导入自定义 PNG、WebP 或 JPG 图像。
 
+### 添加自定义宠物
+不喜欢埃利奥特? 可以使用任何角色:
+- **静态图片**: 将 PNG、JPG 或 WebP 文件放入 `assets/pets/` 目录，然后通过右键菜单 -> "切换宠物" 选择。
+- **动态动画**: 在 `assets/pets/` 内创建子文件夹 (例如 `assets/pets/my_character/`)，放入编号帧 (`frame_000.png`, `frame_001.png`, ...)，程序会自动将其作为视频序列播放。
+- 缩放、脱离模式和所有视觉效果对任何宠物都适用。
+
 ---
 
 ## 核心特性
@@ -84,7 +90,7 @@
 
 1. 克隆代码仓库:
    ```bash
-   git clone https://github.com/USERNAME/dreamagy.git
+   git clone https://github.com/shawermun/dreamagy.git
    cd dreamagy
    ```
 
@@ -102,66 +108,6 @@
 ### Windows 开机自启设置 (可选)
 1. 按下 `Win + R` 键，输入 `shell:startup` 并回车。
 2. 为 `run.bat` 创建快捷方式，将其放入打开的启动文件夹即可。
-
----
-
-## 控制与快捷操作
-
-| 操作 | 说明 |
-| :--- | :--- |
-| **鼠标左键 + 拖拽** | 在桌面上自由移动小部件 |
-| **挂件上鼠标右键** | 打开主上下文菜单与设置面板 |
-| **点击埃利奥特** | 触发随机动作或显示经典台词 |
-| **键盘打字输入** | 自动激活伴侣的深度专注姿态 |
-| **系统托盘图标** | 快速刷新配额、进入设置或退出应用 |
-
----
-
-## 架构与工作原理
-
-```mermaid
-flowchart LR
-    AG[Google Antigravity IDE] -->|启动| LS[language_server.exe]
-    LS -->|本地 HTTPS Connect RPC| Prov[AntigravityProvider]
-    Prov -->|解析配额与重置时间| Core[Dreamagy Engine]
-    Core -->|PyQt5 绘制| Widget[配额悬浮挂件]
-    Core -->|真实视频帧循环| Pet[埃利奥特伴侣]
-```
-
-1. `antigravity_provider.py` 扫描本地正在运行的 `language_server.exe` 进程 PID。
-2. 读取进程启动参数，提取一次性 CSRF 令牌（`--csrf_token`）与本地 HTTPS 端口。
-3. 发起本地 Connect Protocol RPC 请求：
-   - `/GetUserStatus` - 获取用户账户状态与套餐级别。
-   - `/RetrieveUserQuotaSummary` - 获取精确的 `gemini-weekly`、`gemini-5h`、`3p-weekly`、`3p-5h` 分桶用量。
-4. 基于 PyQt5 的无边框半透明窗口进行图形渲染。
-
----
-
-## 项目结构
-
-```
-dreamagy/
-├── assets/
-│   ├── demo.gif              # 主悬浮挂件演示动图
-│   ├── quota_bars.gif        # 配额进度条动画演示
-│   ├── elliot.gif            # 埃利奥特伴侣动画演示
-│   ├── elliot.png            # 埃利奥特静态素材
-│   └── pets/                 # 自定义宠物皮肤与动画帧目录
-├── antigravity_provider.py   # Antigravity 本地通信模块
-├── config.py                 # 配置加载与保存模块
-├── config.json               # 用户配置参数
-├── i18n.py                   # 国际化多语言支持模块 (RU, EN, ZH)
-├── main.py                   # 程序主入口与全局键盘监听
-├── pet_elliot.py             # 桌面伴侣动作引擎
-├── settings_dialog.py        # 设置面板
-├── tray.py                   # Windows 系统托盘管理
-├── widget.py                 # 核心胶囊挂件
-├── requirements.txt          # Python 依赖清单
-├── run.bat                   # Windows 快速启动脚本
-├── README.md                 # 俄语项目文档
-├── README.en.md              # 英语项目文档
-└── README.zh.md              # 中文项目文档
-```
 
 ---
 
