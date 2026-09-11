@@ -49,9 +49,6 @@ preview*.png
 eye_test*.png
 blink_test*.png
 assets_preview.html
-generate_gifs.py
-render_preview.py
-test_check.py
 
 # User config (generated at runtime)
 config.json

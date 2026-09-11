@@ -11,7 +11,8 @@ from typing import Dict, List, Optional
 from PyQt5 import QtCore
 
 BASE_REMOTE_URL = "https://raw.githubusercontent.com/Tomatio13/pet-companion/master/petcompanion/pet_static/assets"
-PETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "pets")
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+PETS_DIR = os.path.join(ROOT_DIR, "assets", "pets")
 
 CATALOG_PETS: Dict[str, dict] = {
     "clippit": {

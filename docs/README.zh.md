@@ -15,7 +15,7 @@
 <br />
 <br />
 
-**Dreamagy** 是一款轻量级桌面悬浮小部件，可实时精准显示 **Google Antigravity** 模型配额与速率限制（Gemini 3.8 Flash、Gemini 3.1 Pro、Claude Sonnet/Opus、GPT-OSS）。设计灵感源自 [Quotty](https://github.com/confeden/Quotty) 的极简美学与美剧 **Mr. Robot**（《黑客军团》）的科技氛围。
+**Dreamagy** 是一款轻量级桌面悬浮小部件，可实时精准显示 **Google Antigravity** 模型配额与速率限制（Gemini 3.8 Flash、Gemini 3.1 Pro、Claude Sonnet/Opus、GPT-OSS）。
 
 </div>
 
@@ -139,5 +139,5 @@ Dreamagy 现已提供包含 **9 款独具特色** 的桌面互动伴侣，每位
 本项目遵循 MIT License 开源许可协议。详情请参阅 `LICENSE` 文件。
 
 <div align="center">
-<sub>致敬 Quotty 项目与电视剧《黑客军团》(Mr. Robot)。专为 Google Antigravity 开发者打造。</sub>
+<sub>专为 Google Antigravity 开发者打造。</sub>
 </div>

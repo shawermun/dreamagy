@@ -14,7 +14,7 @@ import urllib.request
 from datetime import datetime, timezone, timedelta
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict
-from i18n import t
+from src.core.i18n import t
 
 WINDOW_SECONDS = 5 * 3600  # 5-hour quota window (default)
 WINDOW_SECONDS_5H = 5 * 3600       # 5-hour quota window

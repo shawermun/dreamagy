@@ -7,8 +7,8 @@ and a quick context menu.
 from typing import Optional
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-from antigravity_provider import QuotaSnapshot
-from i18n import t
+from src.core.antigravity_provider import QuotaSnapshot
+from src.core.i18n import t
 
 
 def create_tray_icon(percent: int = 100, is_online: bool = True) -> QtGui.QIcon:

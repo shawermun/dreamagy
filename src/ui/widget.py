@@ -19,10 +19,10 @@ from typing import List, Optional
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QPoint, QPointF, QRectF, QTimer
 
-from pet_elliot import ElliotPet, PetCompanionWidget
-from antigravity_provider import LimitItem, QuotaSnapshot
-from i18n import t
-import pet_catalog
+from src.pets.pet_elliot import ElliotPet, PetCompanionWidget, PETS_DIR
+from src.core.antigravity_provider import LimitItem, QuotaSnapshot
+from src.core.i18n import t
+from src.pets import pet_catalog
 
 
 class Particle:
@@ -341,7 +341,6 @@ class DreamagyWidget(QtWidgets.QWidget):
                 found = True
                 break
         if not found:
-            from pet_elliot import PETS_DIR
             p_path = os.path.join(PETS_DIR, pet_name)
             if os.path.exists(p_path):
                 self.pet.set_pet_image(p_path, save_name=pet_name)
@@ -379,7 +378,6 @@ class DreamagyWidget(QtWidgets.QWidget):
             self, "Выберите изображение питомца", "", "Изображения (*.png *.jpg *.jpeg *.webp)"
         )
         if file_path:
-            from pet_elliot import PETS_DIR
             os.makedirs(PETS_DIR, exist_ok=True)
             dest_name = os.path.basename(file_path)
             dest_path = os.path.join(PETS_DIR, dest_name)

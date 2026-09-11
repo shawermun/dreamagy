@@ -10,7 +10,7 @@ Allows customizing:
 from typing import Dict
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, pyqtSignal
-from i18n import t
+from src.core.i18n import t
 
 
 class ColorButton(QtWidgets.QPushButton):

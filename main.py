@@ -3,16 +3,20 @@ Dreamagy Entry Point.
 Launches the floating Quotty-inspired Antigravity quota monitor with Elliot Alderson pet.
 """
 
-import sys
 import os
+import sys
+
+# Ensure project root is on sys.path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QThread, pyqtSignal
 
-from config import load_config, save_config
-from antigravity_provider import AntigravityProvider, QuotaSnapshot
-from widget import DreamagyWidget
-from tray import DreamagyTray
-from settings_dialog import SettingsDialog
+from src.core.config import load_config, save_config
+from src.core.antigravity_provider import AntigravityProvider, QuotaSnapshot
+from src.ui.widget import DreamagyWidget
+from src.ui.tray import DreamagyTray
+from src.ui.settings_dialog import SettingsDialog
 
 try:
     import win32api

@@ -5,7 +5,8 @@ Handles saving and loading user preferences such as position, opacity, and pet v
 import os
 import json
 
-CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+CONFIG_PATH = os.path.join(ROOT_DIR, "config.json")
 
 DEFAULT_CONFIG = {
     "pos_x": 100,

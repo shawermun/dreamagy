@@ -15,7 +15,7 @@
 <br />
 <br />
 
-**Dreamagy** is a lightweight floating desktop widget that tracks real-time model quotas and rate limits for **Google Antigravity** (Gemini 3.8 Flash, Gemini 3.1 Pro, Claude Sonnet/Opus, GPT-OSS). Inspired by [Quotty](https://github.com/confeden/Quotty) and **Mr. Robot**.
+**Dreamagy** is a lightweight floating desktop widget that tracks real-time model quotas and rate limits for **Google Antigravity** (Gemini 3.8 Flash, Gemini 3.1 Pro, Claude Sonnet/Opus, GPT-OSS).
 
 </div>
 
@@ -139,5 +139,5 @@ Dreamagy features a diverse collection of **9 animated desktop companions**, eac
 Distributed under the MIT License. See `LICENSE` for details.
 
 <div align="center">
-<sub>Inspired by Quotty and Mr. Robot. Built for developers using Google Antigravity.</sub>
+<sub>Built for developers using Google Antigravity.</sub>
 </div>

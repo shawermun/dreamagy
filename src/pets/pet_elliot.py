@@ -16,8 +16,8 @@ import time
 from typing import List, Tuple, Optional, Dict
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QPoint, QPointF, QRectF, QTimer
-from i18n import t
-import pet_catalog
+from src.core.i18n import t
+from src.pets import pet_catalog
 
 QUOTES = [
     "hello, friend.",
@@ -29,8 +29,9 @@ QUOTES = [
     "everything is connected."
 ]
 
-ASSET_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "elliot.png")
-PETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "pets")
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+ASSET_PATH = os.path.join(ROOT_DIR, "assets", "elliot.png")
+PETS_DIR = os.path.join(ROOT_DIR, "assets", "pets")
 
 # Standard Codex 8x9 Atlas layout (matching pet-companion & vscode-pets)
 DEFAULT_CODEX_ROWS: Dict[str, dict] = {
