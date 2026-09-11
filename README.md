@@ -21,7 +21,7 @@
 
 ---
 
-## ⚡ Визуальные эффекты
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/High%20Voltage.png" alt="Voltage" width="28" height="28" /> Визуальные эффекты
 
 <div align="center">
 <table>
@@ -42,7 +42,7 @@
 
 ---
 
-## 🐾 Интерактивные компаньоны
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Companion" width="28" height="28" /> Интерактивные компаньоны
 
 <div align="center">
   <img src="assets/pets_showcase.gif" alt="Dreamagy Characters Showcase" width="680" />
@@ -56,7 +56,7 @@
 
 ---
 
-## 🛠️ Возможности
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gear.png" alt="Features" width="28" height="28" /> Возможности
 
 * **Без API-ключей и настройки**: программа сама находит локальный языковой сервер Antigravity и считывает квоты напрямую через `127.0.0.1`.
 * **100% Приватность**: нет отправки данных во внешнюю сеть или сторонних серверов.
@@ -65,7 +65,7 @@
 
 ---
 
-## 🚀 Установка и запуск
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Launch" width="28" height="28" /> Установка и запуск
 
 ```bash
 # 1. Клонируем репозиторий
